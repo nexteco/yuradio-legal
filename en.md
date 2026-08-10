@@ -1,6 +1,6 @@
 # YuRadio Privacy Policy
 
-**Last updated**: April 23, 2026
+**Last updated**: August 10, 2026
 **Applies to**: YuRadio Android app (package `kr.nexteco.yuradio`)
 
 NexTeco ("the Developer") values the privacy of YuRadio users and complies with applicable laws. This policy describes what information the app collects, uses, and shares.
@@ -15,9 +15,13 @@ The following data is used in a limited manner.
 
 - Favorite stations (name, URL, frequency, tags)
 - Selected country preset
-- UI settings (sort order, etc.)
+- UI settings (language, sort order, etc.)
 - Last played station ID (for auto-resume on restart)
-- Song identification history (up to 50 entries, removed when the app is uninstalled)
+- Data usage statistics (daily traffic, split by Wi-Fi/mobile)
+- Anonymous install identifier (a random value generated on first launch - see 1.4)
+
+Identified song details are kept in memory for display only and are discarded when
+you change channels or close the app. No history is stored.
 
 **All of this data is stored only in the device's internal SQLite database and is never sent externally.**
 
@@ -31,8 +35,43 @@ The app communicates with the following external services for functionality.
 | Broadcaster streaming servers | HTTP requests | Radio audio playback |
 | AcoustID (acoustid.org) | Audio fingerprint, duration | Song identification (optional) |
 | MusicBrainz (linked) | Recording ID | Metadata for identified songs |
+| Broadcaster now-playing APIs (MBC, SBS) | HTTP requests | Show the current song/program (optional) |
+| Listening stats server (Cloudflare) | Anonymous install identifier, app version | Regional listening statistics (optional - see 1.4) |
 
 An **audio fingerprint** is a short hash extracted from ~16 seconds of audio; **the original audio cannot be reconstructed from it.** It is not sent when auto-identify is disabled.
+
+### 1.4 Anonymous listening statistics
+
+The app aggregates how many people are listening in each region and shows this on a
+public map.
+
+**What is sent** is only the **random install identifier** generated on first launch
+and the **app version**. It is not a device ID or advertising identifier, and
+reinstalling the app creates a new value. **No location data (GPS) and no information
+about which channel you are listening to is sent.**
+
+**The server infers only the country and first-level administrative region** (e.g.
+province/state) from your IP address. Finer divisions are not collected because IP
+based accuracy is poor at that level, and map coordinates are rounded to roughly
+11 km. **The original IP address is never stored.**
+
+Data is sent only while a station is playing, about every 5 minutes. Stopping
+playback or exiting the app removes you from the count immediately.
+
+**Retention**
+
+| Item | Period |
+|---|---|
+| Current listening session | Deleted within 24 hours of the last signal |
+| Install identifier record (for unique user/install counts) | 400 days after last access |
+| Daily regional aggregates (not personally identifiable) | 400 days |
+
+**How to turn it off**: App → Settings → About tab → Listening Map →
+**Share anonymous listening stats**. Sending stops immediately and the current
+session record on the server is deleted right away.
+
+This aggregation is processed and stored on servers operated by Cloudflare, Inc.
+(Cloudflare Workers and D1).
 
 ### 1.3 System Permissions
 
@@ -53,6 +92,7 @@ When required for app functionality, the app communicates with the external serv
 - Radio Browser: https://www.radio-browser.info/
 - AcoustID: https://acoustid.org/privacy
 - MusicBrainz: https://metabrainz.org/privacy
+- Cloudflare: https://www.cloudflare.com/privacypolicy/
 
 ## 3. Ads / Analytics / Crash Reporting
 
@@ -60,20 +100,30 @@ When required for app functionality, the app communicates with the external serv
 - **No analytics SDKs** (Firebase Analytics, Google Analytics, etc.)
 - **No crash reporting SDKs** (Crashlytics, Sentry, etc.)
 
+No third-party analytics tools are used. The one exception is the app's own listening
+statistics described in 1.4, which can be turned off in Settings.
+
 ## 4. Children
 
 This app is not directed at children under 13. While rated "Everyone", we recommend parental supervision for younger users.
 
 ## 5. Data Deletion
 
-All app data resides only on the device, so uninstalling the app removes all data.
+**On-device data** is removed entirely when you uninstall the app. Individual items
+can be deleted in the app:
 
-You can also delete items individually:
+- Favorite stations: Settings → Channels, or long-press a station in the list
+- Data usage records: Settings → About → Reset usage
+- Everything: Android Settings → Apps → YuRadio → Storage → Clear Data
 
-- Favorite stations: Settings → swipe or long-press a station → Delete
-- Identification history: Android Settings → Apps → YuRadio → Storage → Clear Data
+**Server-side data** is limited to the listening statistics described in 1.4:
 
-Because **no user data is stored on any server**, a separate deletion request process is not required.
+- Turning off Settings → About → Listening Map → Share anonymous listening stats
+  stops sending and immediately deletes the current session record
+- What remains is only access dates tied to an anonymous install identifier, deleted
+  automatically after the retention periods above
+- Reinstalling the app generates a new identifier, so it cannot be linked to earlier records
+- For any other deletion request, please contact us using the details below
 
 ## 6. Changes to this Policy
 
