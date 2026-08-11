@@ -4,7 +4,7 @@
 **Last updated**: August 12, 2026
 **Applies to**: YuRadio Android app (package `kr.nexteco.yuradio`)
 
-NexTeco ("the Developer") values the privacy of YuRadio users and complies with applicable laws. This policy describes what information the app collects, uses, and shares.
+NEXTECO ("the Developer") values the privacy of YuRadio users and complies with applicable laws. This policy describes what information the app collects, uses, and shares.
 
 ## Summary
 
@@ -80,7 +80,7 @@ When required for app functionality, the app communicates with the external serv
 
 ## 4. Children
 
-This app is not directed at children under 13. While rated "Everyone", we recommend parental supervision for younger users.
+This app is not designed for children under 13. The app content itself is rated for general audiences and contains no objectionable material.
 
 ## 5. Data Deletion
 
@@ -100,7 +100,7 @@ Any changes will be announced via app update and on this page. If usage statisti
 
 For privacy inquiries, please contact:
 
-**NexTeco**
+**NEXTECO**
 Email: nexteco.kr@gmail.com
 
 ---
